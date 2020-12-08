@@ -36,11 +36,6 @@ For more commands check `make help`.
 ## Run Service
 After `make run`, with the current setup, run `php ./bin/console.php` to see the list of commands already have been added.
 
-To use the test command:
+To use the XmlToSheetConverter command:
 
-`
-php ./bin/console.php spreadsheet:validate_transform
-`
-
-## Register new command to the service: 
-Add the command namespace to `config/command.php`, and the service will auto register it.
+`php ./bin/console.php spreadsheet:xml_to_sheet coffee "/coffee_feed.xml"`

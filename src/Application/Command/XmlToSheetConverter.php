@@ -18,7 +18,7 @@ use Wajdisawa\spreadsheet\Domain\Xml\XmlParser;
 use Wajdisawa\spreadsheet\Domain\Xml\XmlParserInterface;
 use Wajdisawa\spreadsheet\Infrastructure\SheetCreator;
 
-final class TestCommand extends Command
+final class XmlToSheetConverter extends Command
 {
     private const FILE = 'xml_file';
     private const  SHEET_TITLE = 'sheet_title';
@@ -39,7 +39,7 @@ final class TestCommand extends Command
     private Logger $logger;
 
     /**
-     * TestCommand constructor.
+     * XmlConvert constructor.
      * @param SheetCreator $sheetCreator
      * @param XmlParser $xmlParser
      * @param Logger $logger

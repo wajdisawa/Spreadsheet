@@ -6,6 +6,6 @@
  */
 
 $commandRegistry['commands'] = [
-    Wajdisawa\spreadsheet\Application\Command\TestCommand::class,
+    Wajdisawa\spreadsheet\Application\Command\XmlToSheetConverter::class,
 ];
 return $commandRegistry;
