@@ -1,0 +1,46 @@
+{
+  "name": "wajdisawa/spreadsheet",
+  "description": "This is a microservice as cli command converts xml file to google sheet document, with shared permission",
+  "type": "project",
+  "license": "MIT",
+  "keywords": [
+    "slim",
+    "cli",
+    "command",
+    "xml",
+    "google sheet"
+  ],
+  "authors": [
+    {
+      "name": "wajdi sawafta",
+      "email": "wajdee.sawaf@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "autoload": {
+    "psr-4": {
+      "Wajdisawa\\spreadsheet\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Wajdisawa\\spreadsheet\\Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "php": "~7.4",
+    "ext-json": "*",
+    "php-di/php-di": "^6.2",
+    "php-di/slim-bridge": "^3.0",
+    "slim/slim": "^4.5",
+    "symfony/console": "^5.0",
+    "slim/psr7": "^1.2",
+    "ext-libxml": "*",
+    "ext-simplexml": "*",
+    "google/apiclient": "^2.0"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-master",
+    "phpstan/phpstan": "^0.12.37"
+  }
+}
