@@ -24,9 +24,6 @@ return [
     },
     ResponseFactoryInterface::class => static function (ContainerInterface $container) {
         return $container->get(App::class)->getResponseFactory();
-    },
-    Logger::class => static function () {
-        return new Logger('spreadsheet');
     }
 ];
 
