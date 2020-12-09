@@ -3,7 +3,6 @@
 This service converts XML file in to Google Sheet, and share ownership of the created document with configurable user email.
 
 ##Requirements 
-
 - Create google project : https://cloud.google.com/resource-manager/docs/creating-managing-projects
 - Enable Google sheet API : https://developers.google.com/sheets/api/quickstart/php
 - Enable Google drive API : https://developers.google.com/drive/api/v3/enable-drive-api
