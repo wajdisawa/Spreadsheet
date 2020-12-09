@@ -15,7 +15,7 @@ use SimpleXMLElement;
  * Class XmlParser
  * @package Wajdisawa\spreadsheet\Domain\Xml
  */
-final class XmlParser implements XmlParserInterface
+class XmlParser implements XmlParserInterface
 {
     /**
      * @param string $xmlFile

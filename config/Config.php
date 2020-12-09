@@ -11,14 +11,14 @@ declare(strict_types=1);
  * Class config
  * @package Wajdisawa\spreadsheet\config
  */
-final class Config
+class Config
 {
     /**
      * @param string $key
      * @param string|null $default
      * @return string|null
      */
-    public static function getEnv(string $key, string $default=null): ?string
+    public function getEnv(string $key, string $default=null): ?string
     {
         $value = getenv($key);
         return $value === false ? $default : $value;

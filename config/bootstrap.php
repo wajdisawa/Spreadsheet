@@ -14,10 +14,11 @@ $containerBuilder->addDefinitions(__DIR__ . '/container.php');
 $container = $containerBuilder->build();
 $app = $container->get(App::class);
 require __DIR__ . '/Config.php';
+$config = new Config();
 $app->addErrorMiddleware(
-    Config::getEnv('PHP_DISPLAY_ERRORS', false),
-    Config::getEnv('PHP_LOG_ERROR', true),
-    Config::getEnv('PHP_LOG_ERROR_DETAILS', true)
+    $config->getEnv('PHP_DISPLAY_ERRORS', false),
+    $config->getEnv('PHP_LOG_ERROR', true),
+    $config->getEnv('PHP_LOG_ERROR_DETAILS', true)
 );
-ini_set("memory_limit", "-1");
+ini_set("memory_limit", "1G");
 return $app;

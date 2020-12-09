@@ -23,7 +23,15 @@ final class Permission implements PermissionInterface
     public const SEND_NOTIFICATION_EMAIL = 'sendNotificationEmail';
     public const SEND_NOTIFICATION_EMAIL_ENV = 'SEND_NOTIFICATION_EMAIL';
 
+    /**
+     * @var Google_Client
+     */
     private Google_Client $client;
+
+    /**
+     * @var Config
+     */
+    private Config $conf;
 
     /**
      * Permission constructor.
@@ -32,6 +40,7 @@ final class Permission implements PermissionInterface
     public function __construct(Google_Client $client)
     {
         $this->client = $client;
+        $this->conf = new Config();
     }
 
     /**
@@ -41,14 +50,14 @@ final class Permission implements PermissionInterface
     {
         $permission = new Google_Service_Drive_Permission();
         $permission->setType(self::USER);
-        $permission->setRole(Config::getEnv(self::SHEET_PERMISSION, self::DEFAULT_PERMISSION));
-        $permission->setEmailAddress(Config::getEnv(self::SHEET_SHARE_EMAIL));
+        $permission->setRole($this->conf->getEnv(self::SHEET_PERMISSION, self::DEFAULT_PERMISSION));
+        $permission->setEmailAddress($this->conf->getEnv(self::SHEET_SHARE_EMAIL));
         $service = new Google_Service_Drive($this->client);
         $service->permissions->create(
             $sheetId,
             $permission,
             array(
-                self::SEND_NOTIFICATION_EMAIL => Config::getEnv(self::SEND_NOTIFICATION_EMAIL_ENV)
+                self::SEND_NOTIFICATION_EMAIL => $this->conf->getEnv(self::SEND_NOTIFICATION_EMAIL_ENV, 'true')
             )
         );
     }

@@ -36,6 +36,13 @@ For more commands check `make help`.
 ## Run Service
 After `make run`, with the current setup, run `php ./bin/console.php` to see the list of commands already have been added.
 
-To use the XmlToSheetConverter command:
+To use the XmlToSheetConverter command :
 
-`php ./bin/console.php spreadsheet:xml_to_sheet coffee "/coffee_feed.xml"`
+`php ./bin/console.php spreadsheet:xml_to_sheet coffee "coffee_feed.xml"`
+
+## Pre_test
+Either add the XML file to the `app` dir in the docker image or on a network shared dir, and include the path correctly when calling the command.
+
+`Path to the file or directory. use //computername/share/filename or \\computername\share\filename to check files on network shares.`
+
+Refer to https://www.php.net/manual/en/function.file-exists.php

@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Wajdisawa\spreadsheet\Infrastructure;
 
 use Google_Service_Sheets;
+use Google_Service_Sheets_BatchUpdateSpreadsheetRequest;
 use Slim\Logger;
 use Wajdisawa\spreadsheet\Domain\Google\Authenticator;
 use Wajdisawa\spreadsheet\Domain\Google\AuthenticatorInterface;
@@ -20,8 +21,10 @@ use Wajdisawa\spreadsheet\Domain\Google\Sheet;
  * Class SheetCreator
  * @package Wajdisawa\spreadsheet\Infrastructure
  */
-final class SheetCreator implements SheetCreatorInterface
+class SheetCreator implements SheetCreatorInterface
 {
+    public const SHEET_ID = 0;
+
     /**
      * @var AuthenticatorInterface
      */
@@ -59,10 +62,10 @@ final class SheetCreator implements SheetCreatorInterface
         $requests = array();
         foreach ($dataArray as $data) {
             foreach ($data as $item) {
-                $requests[] = $sheet->addRow(0, (array)$item);
+                $requests[] = $sheet->addRow(self::SHEET_ID, (array)$item);
             }
         }
-        $batchUpdateRequest = new \Google_Service_Sheets_BatchUpdateSpreadsheetRequest(array(
+        $batchUpdateRequest = new Google_Service_Sheets_BatchUpdateSpreadsheetRequest(array(
             'requests' => $requests
         ));
         try {

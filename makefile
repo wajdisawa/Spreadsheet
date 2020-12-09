@@ -25,6 +25,10 @@ logs: ## logs service
 static-analysis: ## static code analyze
 	docker-compose run -T --rm spreadsheet-service vendor/bin/phpstan --level=5 analyse src
 
+.PHONY: test
+test: ## run phpunit test
+	docker-compose run -T --rm spreadsheet-service vendor/bin/phpunit tests
+
 .PHONY: help
 help: ## help
 	@grep -E '^[0-9a-zA-Z_/()$$-]+:.*?## .*$$' $(lastword $(MAKEFILE_LIST)) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'

@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Wajdisawa\spreadsheet\Domain\Google;
 
+use Config;
 use Google\Exception;
 use Google_Client;
 use Google_Service_Drive;
@@ -26,6 +27,19 @@ final class Authenticator implements AuthenticatorInterface
     public const AUTH_CONFIG = 'AUTH_CONFIG';
 
     /**
+     * @var Config
+     */
+    private Config $conf;
+
+    /**
+     * Authenticator constructor.
+     */
+    public function __construct()
+    {
+        $this->conf = new Config();
+    }
+
+    /**
      * @return Google_Client
      * @throws Exception
      */
@@ -35,7 +49,7 @@ final class Authenticator implements AuthenticatorInterface
         $client->setApplicationName(self::APPLICATION_NAME);
         $client->setScopes([Google_Service_Sheets::SPREADSHEETS, Google_Service_Drive::DRIVE]);
         $client->setAccessType(self::ACCESS_TYPE);
-        $client->setAuthConfig(realpath(\Config::getEnv(self::AUTH_CONFIG)));
+        $client->setAuthConfig(realpath($this->conf->getEnv(self::AUTH_CONFIG)));
         return $client;
     }
 }

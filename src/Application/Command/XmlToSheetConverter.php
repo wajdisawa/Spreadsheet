@@ -17,16 +17,17 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Wajdisawa\spreadsheet\Domain\Xml\XmlParser;
 use Wajdisawa\spreadsheet\Domain\Xml\XmlParserInterface;
 use Wajdisawa\spreadsheet\Infrastructure\SheetCreator;
+use Wajdisawa\spreadsheet\Infrastructure\SheetCreatorInterface;
 
 final class XmlToSheetConverter extends Command
 {
-    private const FILE = 'xml_file';
-    private const  SHEET_TITLE = 'sheet_title';
+    public const FILE = 'xml_file';
+    public const  SHEET_TITLE = 'sheet_title';
 
     /**
-     * @var SheetCreator
+     * @var SheetCreatorInterface
      */
-    private SheetCreator $sheetCreator;
+    private SheetCreatorInterface $sheetCreator;
 
     /**
      * @var XmlParserInterface
